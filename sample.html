@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I have a question...</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            background-color: #ffe6e6;
+            padding-top: 100px;
+            overflow-x: hidden;
+        }
+        h1 { color: #ff4d6d; }
+        p { font-size: 18px; color: #4a4a4a; }
+        
+        .btn {
+            padding: 15px 30px;
+            font-size: 18px;
+            margin: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #yesBtn { background-color: #ff4d6d; color: white; }
+        #noBtn { background-color: #ccc; color: #333; z-index: 999; }
+        
+        #datePlanner {
+            display: none;
+            margin-top: 30px;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            display: inline-block;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+        }
+        
+        input[type="datetime-local"] {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            display: block;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        #submitBtn {
+            background-color: #2b9348;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="mainQuestion">
+        <h1>Will you go out with me? pls pls</h1>
+        <p>Pick wisely!</p>
+        <button class="btn" id="yesBtn" onclick="celebrate()">Yes!</button>
+        <button class="btn" id="noBtn" onmouseover="moveButton()" onclick="moveButton()">No</button>
+    </div>
+
+    <form id="datePlanner" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" style="display: none;">
+        <h2>Yay! ❤️</h2>
+        <p>When are you free? Let me know the date and time:</p>
+        
+        <input type="datetime-local" id="datePicker" name="date_and_time" required>
+        
+        <button type="submit" id="submitBtn">Lock it in! ✨</button>
+    </form>
+
+    <script>
+        function celebrate() {
+            document.getElementById("mainQuestion").style.display = "none";
+            document.getElementById("datePlanner").style.display = "inline-block";
+        }
+
+        function moveButton() {
+            const noBtn = document.getElementById('noBtn');
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth - 20);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight - 20);
+            
+            noBtn.style.position = 'absolute';
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+        }
+    </script>
+</body>
+</html>
